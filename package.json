@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hapijs-edge/hapi-plugins.com.git"
+    "url": "https://github.com/thejones/nodosaurus.git"
   },
   "keywords": [
     "hapi",

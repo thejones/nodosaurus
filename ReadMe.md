@@ -13,11 +13,11 @@ This project is as-is for suresies. If you see an error send a pull request or f
 * Hapi ecosystem (lab, good, boom, etc)
 * MongoDB + mongoose
 * JWT authentication
-* Basic Stripe implementation. (Based on Node Stripe example)
+* Basic Stripe implementation. (Based on Node Stripe example but uses Checkout on the client side.)
 
 ## Coming soon
 
- * More tests. Lab makes these so EASY!
+ * More tests!
  * Add npm scripts for test coverage - currently very low.
  * Bug fixes and things I missed.
  * Verifying status codes with Boom (Copy/Paste mistakes)
@@ -30,9 +30,9 @@ This project is as-is for suresies. If you see an error send a pull request or f
 * Clone/Fork the repo
 * Have Node installed
 * npm install within the project structure
-* node/nodemon server.js
-* Grab the nodosaurus-aurelia-client repo to test the stripe integration.
-* Build things.
+* node/nodemon index.js
+* Grab the nodosaurus-aurelia-client or nodosaurus-react-client for prime time action.
+* Build things, fix things, submit pull-request.
 
 Visit post to the following.
 ```
@@ -59,7 +59,9 @@ POST   /users/plan
 
 
 ## Credits
-* MEAN.JS project as this is a port of that code.
+* MEAN.JS - project started from this.
 * Frame - User API written in Hapi
-* Hapi-Boilerplate (Basic structure of this project)
-* Hapi website. Docs are rock solid on that site.
+* Hapi-Boilerplate
+* Hapi-University
+* Hapi website. Docs & what not.
+* Hapi community on Gitter.
