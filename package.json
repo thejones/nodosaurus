@@ -91,6 +91,7 @@
     "url": "https://github.com/thejones/nodosaurus.git"
   },
   "scripts": {
+    "postinstall": "(cd public && npm install)",
     "debug": "node-debug index.js",
     "dev": "nodemon index",
     "start": "node index",
