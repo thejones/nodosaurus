@@ -3,65 +3,39 @@
 ![alt tag](http://www.dinosaurjungle.com/greenst_nodosaurus.jpg)
 
 ## Why?
-I wanted to learn more about Hapi. This is a "port" of MEAN JS in a lot of ways.
-It is a not a direct port as it does add/remove a few things. What a great way to learn...
-This project is as-is for suresies. If you see an error send a pull request or fill out an issue.
+I wanted a project that was ready to go when I have a great idea. I also wanted to create a learning tool for others to check out. Nodosaurus is that vision.
 
 ## What's inside
 
 * Hapi
 * Hapi ecosystem (lab, good, boom, etc)
 * MongoDB + mongoose
-* JWT authentication
+* Postgres/PostGIS + Massive
+* Auth0 - Why deal with this anymore?
 * Basic Stripe implementation. (Based on Node Stripe example but uses Checkout on the client side.)
+* Vue.js is targeted for the 1.0 release. Aurelia is used for pre-release tags.
 
 ## Coming soon
 
- * More tests!
- * Add npm scripts for test coverage - currently very low.
- * Bug fixes and things I missed.
- * Verifying status codes with Boom (Copy/Paste mistakes)
- * Update to latest Hapi version. (CORS issues)
- * Learn more about Hapi and refactor this code.
- * Better github info for releases, commits, etc.
+ * This project is currently being redeveloped and updated.
+ * ES6/ES7 (Async/Await handlers)
+ * Better organization
+ * Server hosts client app (less deps to get going)
+
 
 ## Getting started
 
-* Clone/Fork the repo
-* Have Node installed
-* npm install within the project structure
-* node/nodemon index.js
-* Grab the nodosaurus-aurelia-client or nodosaurus-react-client for prime time action.
-* Build things, fix things, submit pull-request.
-
-Visit post to the following.
-```
-POST   /api/articles                  
-GET    /api/articles                  
-DELETE /api/articles/{articleId}      
-PUT    /api/articles/{articleId}      
-GET    /api/articles/{articleId}      
-POST   /auth/forgot                   
-POST   /auth/login                    
-PUT    /auth/me                       
-GET    /auth/me                       
-DELETE /auth/me/delete                
-POST   /auth/password                 
-POST   /auth/signup                   
-GET    /reset/{token}                 
-POST   /reset/{token}                 
-POST   /stripe/webhooks               
-POST   /users/billing                 
-POST   /users/plan            
-```
+* Wait for the 1.0 release.
 
 
-
-
-## Credits
-* MEAN.JS - project started from this.
+## Credits & such
+* MEAN.JS
 * Frame - User API written in Hapi
 * Hapi-Boilerplate
 * Hapi-University
 * Hapi website. Docs & what not.
 * Hapi community on Gitter.
+* StackOverflow
+* Google (to find StackOverflow answers)
+* Feathers.js (Awesome real-time node project - Check it out)
+* Glazedio/glazed (Koa2 Framework/Boilerplate + mongo. Rapid MVP development stack.)

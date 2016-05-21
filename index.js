@@ -1,1 +1,3 @@
-module.exports = require('./lib');
+require("babel-core/register");
+require("babel-polyfill");
+require('./lib');
