@@ -1,3 +1,6 @@
+
+[![Build Status](https://semaphoreci.com/api/v1/thejones/nodosaurus/branches/v2-master/badge.svg)](https://semaphoreci.com/thejones/nodosaurus)
+
 # nodosaurus: A Hapi API
 
 ![alt tag](http://www.dinosaurjungle.com/greenst_nodosaurus.jpg)
