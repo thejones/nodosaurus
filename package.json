@@ -10,6 +10,7 @@
     "actin": "0.0.1",
     "async": "^2.0.0-rc.5",
     "axios": "^0.11.1",
+    "babel-polyfill": "^6.9.0",
     "babel-register": "^6.9.0",
     "babel-runtime": "^6.9.0",
     "bell": "^7.7.0",
