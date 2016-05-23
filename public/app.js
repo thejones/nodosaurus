@@ -5,7 +5,7 @@ Vue.http.interceptors.push({
   response: function (response) {
     if(response.status === 401) {
       this.logout();
-      this.authenticated = false;      
+      this.authenticated = false;
       router.go('/');
     }
     return response;
@@ -32,18 +32,18 @@ var Private = Vue.extend({
 
 var App = Vue.extend({
   template: `
-    <h1>Vue.js with Auth0</h1>
-    <button @click="login()" v-show="!authenticated">Login</button>
-    <button @click="logout()" v-show="authenticated">Logout</button>
-    <hr>
-    <button v-link="'public'">Public Route</button>
-    <button v-link="'private'" v-show="authenticated">Private Route</button>
-    <router-view></router-view>
-    <hr>
-    <div v-show="authenticated">
-      <button @click="getSecretThing()">Get Secret Thing</button>
-      <h3>{{secretThing}}</h3>
-    </div>
+  <h1>Vue.js with Auth0</h1>
+  <button @click="login()" v-show="!authenticated">Login</button>
+  <button @click="logout()" v-show="authenticated">Logout</button>
+  <hr>
+  <button v-link="'public'">Public Route</button>
+  <button v-link="'private'" v-show="authenticated">Private Route</button>
+  <router-view></router-view>
+  <hr>
+  <div v-show="authenticated">
+  <button @click="getSecretThing()">Get Secret Thing</button>
+  <h3>{{secretThing}}</h3>
+  </div>
   `,
   data() {
     return {
@@ -60,18 +60,26 @@ var App = Vue.extend({
     login() {
       var self = this;
       var lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
-      
+
       lock.show((err, profile, token) => {
-        if(err) {          
+        if(err) {
           // Handle the error
-          console.log(err)          
+          console.log(err)
         } else {
           // Set the token and user profile in local storage
           localStorage.setItem('profile', JSON.stringify(profile));
           localStorage.setItem('id_token', token);
           self.authenticated = true;
-        }        
-      });
+
+          // Create our user
+          this.$http.post('http://turnagain.local:3000/api/v1/auth/users', {token: token, profile: profile}).then(
+            function success(response) {
+              let i = response;
+            }, function error(err) {
+              let e = err;
+            });
+          }
+        });
     },
     logout() {
       var self = this;
@@ -79,7 +87,7 @@ var App = Vue.extend({
       // from local storage
       localStorage.removeItem('id_token');
       localStorage.removeItem('profile');
-      self.authenticated = false;      
+      self.authenticated = false;
     },
     // Make a secure call to the server by attaching
     // the user's JWT as an Authorization header
@@ -88,11 +96,11 @@ var App = Vue.extend({
       this.$http.get('http://localhost:3001/secured/ping', (data) => {
         console.log(data);
         this.secretThing = data.text;
-      }, { 
+      }, {
         headers: jwtHeader
       }).error((err) => console.log(err));
     }
-  }         
+  }
 });
 
 // Utility to check auth status
