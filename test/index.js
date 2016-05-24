@@ -1,19 +1,33 @@
-var Code = require('code'),
-    chalk = require('chalk')
-    Path = require('path'),
-    Lab = require('lab'),
-	Hapi = require('hapi'),
-	Server = require("../lib/server"),
-	Config = require('config'),
-	mongoose = require('mongoose'),
-  	models = require('./../lib/models'),
-	User = mongoose.model('User'),
-	Article = mongoose.model('Article');
+require('babel-core/register');
+require('babel-polyfill');
 
+const Glue = require('glue');
+const Path = require('path');
+const Lab = require('lab');
+const Code = require('code');
+const Server = require('./../lib/server');
 
-//declare internals
+// I am not using the exact same manifest. You might want to.
+const internals = {
+  manifest: {
+    connections: [
+      {
+        labels: ['main']
+      }],
+    registrations: [
+      {
+        plugin: './../lib/router/user',
+        options: {
+          select: ['main'],
+          routes: {
+            prefix: '/api/v1'
+          }
+        }
+      },
 
-var internals = {};
+    ]
+  }
+};
 
 // Test shortcuts
 
@@ -23,38 +37,12 @@ var expect = Code.expect;
 var it = lab.test;
 
 lab.experiment('Server Tests', function () {
-
-
 	lab.test("starts a server correctly.", function(done) {
 
-        Server.init(internals.manifest, internals.composeOptions, function (err, server) {
+        Glue.compose(internals.manifest, { relativeTo: Path.resolve(__dirname, '../lib') },  (err, server) => {
             expect(err).to.not.exist();
-           expect(server).to.be.instanceof(Hapi.Server);
-
-           server.stop(done);
-       });
+            server.stop(done);
+        });
 	});
 
-
 });
-
-
-var internals = {
-    manifest: {
-        connections: [{
-            labels: ['api']
-        }],
-        plugins: {
-            bell: [{ 'select': 'api' }],
-            'hapi-auth-jwt2': [{ 'select': 'api' }],
-            './../lib/authentication': [{'select': 'api'}],
-            './../lib/user.routes': [{ 'select': ['api']}],
-            './../lib/article.routes': [{ 'select': ['api']}]
-
-        }
-    }
-};
-
-internals.composeOptions = {
-    relativeTo: Path.resolve(__dirname, '../lib')
-};

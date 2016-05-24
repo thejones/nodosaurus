@@ -23,6 +23,7 @@
     "bell": "^7.7.0",
     "blipp": "^2.3.0",
     "boom": "^3.1.3",
+    "chairo": "^2.2.1",
     "chalk": "^1.1.3",
     "config": "^1.20.3",
     "dotenv": "^2.0.0",
@@ -60,6 +61,7 @@
     "eslint-config-hapi": "^9.1.0",
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-hapi": "^4.0.0",
+    "eslint-plugin-mocha": "^2.2.0",
     "lab": "^10.6.0",
     "style-loader": "^0.13.1",
     "supertest": "^1.2.0"
@@ -94,9 +96,9 @@
     "url": "https://github.com/thejones/nodosaurus.git"
   },
   "scripts": {
-    "postinstall": "(cd public && npm install)",
     "debug": "node-debug index.js",
     "dev": "nodemon index",
+    "postinstall": "(cd public && npm install)",
     "start": "node index",
     "test": "node node_modules/lab/bin/lab -a code -v",
     "test-cov-html": "./node_modules/lab/bin/lab -a code -r html -o coverage.html"
