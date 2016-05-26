@@ -93,7 +93,7 @@ var App = Vue.extend({
     // the user's JWT as an Authorization header
     getSecretThing() {
       var jwtHeader = { 'Authorization': 'Bearer ' + localStorage.getItem('id_token') };
-      this.$http.get('http://localhost:3001/secured/ping', (data) => {
+      this.$http.get('http://turnagain.local:3000/api/v1/auth/users', (data) => {
         console.log(data);
         this.secretThing = data.text;
       }, {
