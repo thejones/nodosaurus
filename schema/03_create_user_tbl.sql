@@ -8,14 +8,20 @@ create table users(
   "group" "e_group" NOT NULL DEFAULT 'user',
 	user_id varchar(100) not null,
 	created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
 	email varchar(255) not null,
 	ip inet not null default '127.0.0.1',
 	country_code varchar(2) not null default 'US',
 	description varchar(255),
 	billing_address jsonb,
-	total decimal(10,2) not null default 0,
 	terms_accepted boolean default false not null,
 	processor varchar(20) not null default 'stripe',
 	token jsonb,
-	payment_details jsonb not null
+	payment_details jsonb not null,
+  stripe_plan varchar not null default 'free',
+  stripe_subscription_id varchar not null,
+  stripe_customer_id varchar not null,
+  stripe_status varchar not null,
+  card_last4 int not null
+
 )
