@@ -14,7 +14,7 @@ Vue.http.interceptors.push({
 
 // The public route can be viewed at any time
 var Public = Vue.extend({
-  template: `<p>This is a public route</p>`
+  template: `<button>`
 });
 
 // The private route can only be viewed when
@@ -22,7 +22,7 @@ var Public = Vue.extend({
 // uses checkAuth to return true if the user is authenticated
 // or false if not.
 var Private = Vue.extend({
-  template: `<p>This is a private route. If you are reading this, you are authenticated.</p>`,
+  template: `<p>You have an account sign up to go pro!</p>`,
   route: {
     canActivate() {
       return checkAuth();
@@ -37,7 +37,11 @@ var App = Vue.extend({
   <button @click="logout()" v-show="authenticated">Logout</button>
   <hr>
   <button v-link="'public'">Public Route</button>
-  <button v-link="'private'" v-show="authenticated">Private Route</button>
+  <div v-show="authenticated">
+
+  <button v-link="'private'">Private Route</button>
+  <button @click=subscribe()>Payment</button>
+  </div>
   <router-view></router-view>
   <hr>
   <div v-show="authenticated">
@@ -99,6 +103,23 @@ var App = Vue.extend({
       }, {
         headers: jwtHeader
       }).error((err) => console.log(err));
+    },
+
+    subscribe() {
+      const handler = StripeCheckout.configure({
+        key: 'pk_75OgZuwigJSeX7oplmghD8Zld3uSy',
+        image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+        locale: 'auto',
+        token: function(token) {
+          params.stripeToken = token.id;
+          self.submitPayment(params);
+        }
+      });
+      return handler.open({
+        name: 'nodosaurus',
+        description: 'Pro Subscription',
+        amount: 999
+      });
     }
   }
 });
