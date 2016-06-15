@@ -37,7 +37,7 @@
     "hapi-async-handler": "^1.0.3",
     "hapi-auth-jwt": "^4.0.0",
     "hapi-auth-jwt2": "^7.0.0",
-    "hoek": "^4.0.0",
+    "hoek": "^4.0.1",
     "inert": "^4.0.0",
     "install": "^0.8.1",
     "instapromise": "^2.0.2",
@@ -100,7 +100,7 @@
     "dev": "nodemon index",
     "postinstall": "(cd public && npm install)",
     "start": "node index",
-    "test": "node node_modules/lab/bin/lab -a code -v",
+    "test": "./node_modules/lab/bin/lab -a code -v",
     "test-cov-html": "./node_modules/lab/bin/lab -a code -r html -o coverage.html"
   }
 }

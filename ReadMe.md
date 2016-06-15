@@ -29,6 +29,8 @@ I wanted a project that was ready to go when I have a great idea. I also wanted 
 ## Getting started
 
 * Wait for the 1.0 release.
+* Need data?
+http://files.boundlessgeo.com/workshopmaterials/postgis-workshop-201401.zip
 
 
 ## Credits & such

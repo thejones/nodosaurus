@@ -105,13 +105,31 @@ var App = Vue.extend({
       }).error((err) => console.log(err));
     },
 
+    submitPayment(params){
+        var self = this;
+
+        return this.$http.post(`http://turnagain.local:3000/stripe/customer/subscribe`, params)
+            .then( response => {
+                self.stripeInfo = response.content.user.stripe;
+                return response.content;
+            })
+            .catch((e) => {
+              return e;
+            });
+    },
+
     subscribe() {
+      var self = this;
+      const params = {
+        plan: 'pro'
+      };
+
       const handler = StripeCheckout.configure({
-        key: 'pk_75OgZuwigJSeX7oplmghD8Zld3uSy',
+        key: 'pk_test_X9Dtn1DTbt0NAfH0h67nYPRU',
         image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
         locale: 'auto',
         token: function(token) {
-          params.stripeToken = token.id;
+          params.token = token;
           self.submitPayment(params);
         }
       });

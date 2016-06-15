@@ -17,11 +17,11 @@ create table users(
 	terms_accepted boolean default false not null,
 	processor varchar(20) not null default 'stripe',
 	token jsonb,
-	payment_details jsonb not null,
+	payment_details jsonb,
   stripe_plan varchar not null default 'free',
-  stripe_subscription_id varchar not null,
-  stripe_customer_id varchar not null,
-  stripe_status varchar not null,
-  card_last4 int not null
+  stripe_subscription_id varchar,
+  stripe_customer_id varchar,
+  stripe_status varchar,
+  card_last4 int
 
 )
